@@ -44,12 +44,27 @@ class DOMNodeCollection {
         }
     }
 
-    attr() {
-
+    attr(attr, val) {
+        if (!val) {
+            return this.arr[0].getAttribute(attr);
+        } else {
+            for (let i=0; i < this.arr.length; i++) {
+                this.arr[i].setAttribute(attr, val);
+            }
+            return this.arr;
+        }
     }
 
-    addClass() {
-
+    addClass(className) {
+        for (let i = 0; i < this.arr.length; i++) {
+            let currentClass = this.arr[i].getAttribute('class');
+            if (currentClass !== null){
+                this.arr[i].setAttribute("class", `${currentClass} ${className}`);
+            } else {
+                this.arr[i].setAttribute('class', className);
+            }
+        }
+        return this.arr;
     }
 
     removeClass() {
