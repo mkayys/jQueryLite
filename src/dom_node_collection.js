@@ -14,6 +14,13 @@ class DOMNodeCollection {
             return this.arr;
         }
     }
+
+    empty() {
+        for (let i=0; i < this.arr.length; i++) {
+            this.arr[i].innerHTML = "";
+        }
+        return this.arr;
+    }
 }
 
 module.exports = DOMNodeCollection;

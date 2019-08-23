@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nclass DOMNodeCollection {\n    constructor(nodesArr){\n        this.arr = nodesArr;\n    }\n\n    html(str) {\n        if (!str) {\n            return this.arr[0].innerHTML;\n        } else {\n            for(let i=0; i< this.arr.length; i++) {\n                this.arr[i].innerHTML = str;\n            }\n            return this.arr;\n        }\n    }\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("\nclass DOMNodeCollection {\n    constructor(nodesArr){\n        this.arr = nodesArr;\n    }\n\n    html(str) {\n        if (!str) {\n            return this.arr[0].innerHTML;\n        } else {\n            for(let i=0; i< this.arr.length; i++) {\n                this.arr[i].innerHTML = str;\n            }\n            return this.arr;\n        }\n    }\n\n    empty() {\n        for (let i=0; i < this.arr.length; i++) {\n            this.arr[i].innerHTML = \"\";\n        }\n        return this.arr;\n    }\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("\nclass DOMNodeCollection {\n    constructor(nodesArr){\n        this.arr 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nconst $l = (selector) => {\n    if (typeof selector === 'string') {\n        // make a CSS selector\n        const nodeList = document.querySelectorAll(selector);\n        const nodesArr = Array.from(nodeList);\n        return new DOMNodeCollection(nodesArr);\n    } else if(selector instanceof HTMLElement){\n        // to test: let html = document.querySelector('div');\n        // $l(html);\n        let htmlArr = [];\n        htmlArr.push(selector);\n        \n        return new DOMNodeCollection(htmlArr);\n    }\n}\n\n\nwindow.$l = $l;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nconst $l = (selector) => {\n    if (typeof selector === 'string') {\n        // make a CSS selector\n        const nodeList = document.querySelectorAll(selector);\n        const nodesArr = Array.from(nodeList);\n        return new DOMNodeCollection(nodesArr);\n    } else if(selector[0] instanceof HTMLElement){\n        // to test: let html = document.querySelector('div');\n        // $l(html);\n        let htmlArr = [];\n        for (let i=0; i < selector.length; i++) {\n            htmlArr.push(selector[i]);\n        }\n\n        return new DOMNodeCollection(htmlArr);\n    }\n}\n\n\nwindow.$l = $l;\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

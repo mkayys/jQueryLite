@@ -6,12 +6,14 @@ const $l = (selector) => {
         const nodeList = document.querySelectorAll(selector);
         const nodesArr = Array.from(nodeList);
         return new DOMNodeCollection(nodesArr);
-    } else if(selector instanceof HTMLElement){
+    } else if(selector[0] instanceof HTMLElement){
         // to test: let html = document.querySelector('div');
         // $l(html);
         let htmlArr = [];
-        htmlArr.push(selector);
-        
+        for (let i=0; i < selector.length; i++) {
+            htmlArr.push(selector[i]);
+        }
+
         return new DOMNodeCollection(htmlArr);
     }
 }
