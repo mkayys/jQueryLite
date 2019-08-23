@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nclass DOMNodeCollection {\n    constructor(nodesArr){\n        this.arr = nodesArr;\n    }\n\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("\nclass DOMNodeCollection {\n    constructor(nodesArr){\n        this.arr = nodesArr;\n    }\n\n    html(str) {\n        if (!str) {\n            return this.arr[0].innerHTML;\n        } else {\n            for(let i=0; i< this.arr.length; i++) {\n                this.arr[i].innerHTML = str;\n            }\n            return this.arr;\n        }\n    }\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ }),
 
