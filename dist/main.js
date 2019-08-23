@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function $l(arg) {\n\n}\n\n\nwindow.$l = $l;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\nconst $l = (selector) => {\n    if (typeof selector === 'string') {\n        // make a CSS selector\n        const nodeList = document.querySelectorAll(selector);\n        const nodesArr = Array.from(nodeList);\n        return nodesArr;\n    } else {\n        // \n    }\n}\n\n\nwindow.$l = $l;\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
