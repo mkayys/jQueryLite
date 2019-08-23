@@ -6,8 +6,13 @@ const $l = (selector) => {
         const nodeList = document.querySelectorAll(selector);
         const nodesArr = Array.from(nodeList);
         return new DOMNodeCollection(nodesArr);
-    } else {
-        // 
+    } else if(selector instanceof HTMLElement){
+        // to test: let html = document.querySelector('div');
+        // $l(html);
+        let htmlArr = [];
+        htmlArr.push(selector);
+        
+        return new DOMNodeCollection(htmlArr);
     }
 }
 
