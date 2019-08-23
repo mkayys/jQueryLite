@@ -21,6 +21,40 @@ class DOMNodeCollection {
         }
         return this.arr;
     }
+
+    append(arg) {
+        // arg can be a jQuery-lite wrapped collection, HTML element, or string 
+        if(arg instanceof DOMNodeCollection) {
+            for (let i = 0; i < this.arr.length; i++) {
+                this.arr[i].innerHTML += arg.outerHTML;
+            }
+            return this.arr;
+        } else if (arg instanceof HTMLElement) {
+
+            // document.createElement
+            for (let i = 0; i < this.arr.length; i++) {
+                this.arr[i].innerHTML += arg.outerHTML;
+            }
+
+        } else {
+            for (let i=0; i < this.arr.length; i++) {
+                this.arr[i].innerHTML += arg;
+            }
+            return this.arr;
+        }
+    }
+
+    attr() {
+
+    }
+
+    addClass() {
+
+    }
+
+    removeClass() {
+
+    }
 }
 
 module.exports = DOMNodeCollection;
