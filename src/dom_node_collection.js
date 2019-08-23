@@ -58,7 +58,9 @@ class DOMNodeCollection {
     addClass(className) {
         for (let i = 0; i < this.arr.length; i++) {
             let currentClass = this.arr[i].getAttribute('class');
+
             if (currentClass !== null){
+                if (currentClass.includes(className)) return this.arr;
                 this.arr[i].setAttribute("class", `${currentClass} ${className}`);
             } else {
                 this.arr[i].setAttribute('class', className);
@@ -67,8 +69,20 @@ class DOMNodeCollection {
         return this.arr;
     }
 
-    removeClass() {
+    removeClass(className) {
+        for (let i=0; i < this.arr.length; i++){
+            let currentClass = this.arr[i].getAttribute('class');
+            let currentClassArr = currentClass.split(' ');
 
+            if (currentClassArr.includes(className)) {
+                let idx = currentClassArr.indexOf(className);
+                currentClassArr.splice(idx, 1);
+                currentClass = currentClassArr.join(' ').trim();
+                this.arr[i].setAttribute('class', currentClass);
+            }
+            
+        }
+        return this.arr;
     }
 }
 
